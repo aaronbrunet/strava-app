@@ -13,7 +13,7 @@ export default function Home() {
 
   const clientID = '63025'
   const clientSecret = 'REDACTED'
-  const refreshToken = 'REDACTED'
+  const refreshToken = '37e9481a255d31ddabd867579dfcf508c69c24a1'
   const REFRESH_ENDPOINT = `https://www.strava.com/oauth/token?client_id=${clientID}&client_secret=${clientSecret}&refresh_token=${refreshToken}&grant_type=refresh_token`
 
   useEffect(() => {
@@ -88,8 +88,8 @@ function getDate(d){
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Strava Stats</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚲</text></svg>"></link>
       </Head>
 
       <main className={styles.main}>
@@ -100,6 +100,7 @@ function getDate(d){
         {/* {showActivities()} */}
         {showAthlete()}
 
+        {athlete ?
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Member Since {getDate(athlete?.created_at) || 'Never'}</h3>
@@ -129,6 +130,9 @@ function getDate(d){
             {/* </p> */}
           </a>
         </div>
+        :
+        <div>Log In, Ya Dummy</div>
+        }
       </main>
 
       <footer className={styles.footer}>
